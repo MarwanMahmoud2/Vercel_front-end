@@ -168,10 +168,10 @@ export default function AdminDashboard() {
         adminService.getUsers(),
         adminService.getActiveMissingReports(),
       ]);
-      setStats(statsRes.data);
-      setChildren(childrenRes.data);
-      setUsers(usersRes.data);
-      setMissingReports(reportsRes.data || []);
+      setStats(statsRes.data?.data || statsRes.data);
+      setChildren(childrenRes.data?.data ?? childrenRes.data ?? []);
+      setUsers(usersRes.data?.data ?? usersRes.data ?? []);
+      setMissingReports(reportsRes.data?.data || reportsRes.data || []);
     } catch (err) {
       console.error('Failed to load dashboard data:', err);
     } finally {

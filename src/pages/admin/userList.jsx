@@ -25,7 +25,7 @@ export default function UserList() {
     setLoading(true);
     try {
       const response = await adminService.getUsers({ search });
-      setUsers(response.data);
+      setUsers(response.data?.data ?? response.data ?? []);
     } catch (err) {
       console.error('Failed to load users:', err);
     } finally {
